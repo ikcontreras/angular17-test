@@ -1,0 +1,26 @@
+[
+  {
+    "id": "base",
+    "routes": ["add-headers:enabled"]
+  },
+  {
+    "id": "no-headers",
+    "from": "base",
+    "routes": ["add-headers:disabled"]
+  },
+  {
+    "id": "success",
+    "from": "base",
+    "routes": ["get-items:success", "get-item:success", "post-item:success"]
+  },
+  {
+    "id": "errors",
+    "from": "base",
+    "routes": ["get-items:error", "get-item:error", "post-item:error"]
+  },
+  {
+    "id": "real",
+    "from": "no-headers",
+    "routes": ["get-items:success","get-item:real", "post-item:real"]
+  }
+]
