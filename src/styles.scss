@@ -1,1 +1,15 @@
 /* You can add global styles to this file, and also import other style files */
+body {
+  font-family: system-ui;
+  margin: 0;
+  width: 100vw;
+  height: 100vh;
+}
+
+.long-ratio {
+  width: 68%;
+}
+
+.short-ratio {
+  width: 32%;
+}
