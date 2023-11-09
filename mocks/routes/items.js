@@ -27,7 +27,11 @@ module.exports = [
         type: "json", // variant handler id
         options: {
           status: 200, // status to send
-          body: ITEMS, // body to send
+          body: {
+            success: true,
+            message: 'The listing of items was successful',
+            result: ITEMS
+          }, // body to send
         },
       },
       {
@@ -35,7 +39,10 @@ module.exports = [
         type: "json", // variant handler id
         options: {
           status: 400, // status to send
-          body: { message: "Error" }, // body to send
+          body: {
+            success: false,
+            message: 'The listed items have failed',
+          }, // body to send
         },
       },
     ],
@@ -50,7 +57,11 @@ module.exports = [
         type: "json", // variant handler id
         options: {
           status: 200, // status to send
-          body: ITEMS[0], // body to send
+          body: {
+            success: true,
+            message: 'The reading of the item was successful.',
+            result: ITEMS[0]
+          }, // body to send
         },
       },
       {
@@ -58,7 +69,10 @@ module.exports = [
         type: "json", // variant handler id
         options: {
           status: 400, // status to send
-          body: { message: "Error" }, // body to send
+          body: {
+            success: false,
+            message: 'The reading of the item has failed.',
+          }, // body to send
         },
       },
       {
@@ -71,11 +85,16 @@ module.exports = [
             const item = ITEMS.find((itemData) => itemData.id === Number(itemId));
             if (item) {
               res.status(200);
-              res.send(item);
+              res.send({
+                success: true,
+                message: 'The reading of the item was successful.',
+                result: item
+              });
             } else {
               res.status(404);
               res.send({
-                message: "Item not found",
+                success: false,
+                message: 'The reading of the item has failed.',
               });
             }
           },
@@ -93,7 +112,11 @@ module.exports = [
         type: "json", // variant handler id
         options: {
           status: 200, // status to send
-          body: ITEMS[0], // body to send
+          body: {
+            success: true,
+            message: 'The creation of the item was successful.',
+            result: ITEMS[0]
+          }, // body to send
         },
       },
       {
@@ -101,7 +124,10 @@ module.exports = [
         type: "json", // variant handler id
         options: {
           status: 400, // status to send
-          body: { message: "Error" }, // body to send
+          body: {
+            success: false,
+            message: 'The creation of the item has failed.',
+          }, // body to send
         },
       },
       {
@@ -119,11 +145,16 @@ module.exports = [
             const item = ITEMS.find((itemData) => itemData.id === Number(idNewItem));
             if (item) {
               res.status(200);
-              res.send(item);
+              res.send({
+                success: true,
+                message: 'The creation of the item was successful.',
+                result: item
+              });
             } else {
               res.status(404);
               res.send({
-                message: "Item not found",
+                success: false,
+                message: 'The creation of the item has failed.',
               });
             }
           },
