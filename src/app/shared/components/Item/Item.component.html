@@ -1,0 +1,9 @@
+<div class="container">
+  @if (!isComplete) {
+    <input [id]="'item-'+id" type="checkbox" (click)="checked()"/>
+  } @else {
+    <button [id]="'item-'+id" type="submit" (click)="checked()" disabled>&#10004;</button>
+  }
+  <label [for]="'item-'+id" [class]="isComplete ? 'complete' : 'pending'">{{ label }}</label>
+</div>
+
