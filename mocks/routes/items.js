@@ -161,5 +161,72 @@ module.exports = [
         },
       }
     ]
+  },
+  {
+    id: "patch-item", // route id
+    url: "/api/item/:id", // url in express format
+    method: "PATCH", // HTTP method
+    variants: [
+      {
+        id: "success", // variant id
+        type: "json", // variant handler id
+        options: {
+          status: 200, // status to send
+          body: {
+            success: true,
+            message: 'The update of the item was successful.',
+            result: ITEMS[0]
+          }, // body to send
+        },
+      },
+      {
+        id: "error", // variant id
+        type: "json", // variant handler id
+        options: {
+          status: 400, // status to send
+          body: {
+            success: false,
+            message: 'The update of the item has failed.',
+          }, // body to send
+        },
+      },
+      {
+        id: "real", // variant id
+        type: "middleware", // variant handler id
+        options: {
+          // Express middleware to execute
+          middleware: (req, res) => {
+            const id = req.params.id;
+            const body = req.body;
+            
+            const itemUpdated = ITEMS
+              .map((item) => {
+                if (item.id === Number(id)) {
+                  for (let property of Object.keys(body)) {
+                    item[property] = body[property]
+                  }
+                }
+                return item;
+              })
+              .filter(item => item.id === Number(id));
+
+            if (itemUpdated) {
+              res.status(200);
+              res.send({
+                success: true,
+                message: 'The creation of the item was successful.',
+                result: itemUpdated
+              });
+            } else {
+              res.status(404);
+              res.send({
+                success: false,
+                message: 'The creation of the item has failed.',
+              });
+            }
+          },
+        },
+      }
+    ]
   }
 ]

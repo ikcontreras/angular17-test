@@ -11,16 +11,16 @@
   {
     "id": "success",
     "from": "base",
-    "routes": ["get-items:success", "get-item:success", "post-item:success"]
+    "routes": ["get-items:success", "get-item:success", "post-item:success", "patch-item:success"]
   },
   {
     "id": "errors",
     "from": "base",
-    "routes": ["get-items:error", "get-item:error", "post-item:error"]
+    "routes": ["get-items:error", "get-item:error", "post-item:error", "patch-item:error"]
   },
   {
     "id": "real",
     "from": "no-headers",
-    "routes": ["get-items:success","get-item:real", "post-item:real"]
+    "routes": ["get-items:success","get-item:real", "post-item:real", "patch-item:real"]
   }
 ]
