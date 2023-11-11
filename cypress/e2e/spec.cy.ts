@@ -8,6 +8,6 @@ describe('Inital page', () => {
   })
 
   it('Visits the initial project page', () => {
-    cy.contains('Hello, items-management')
+    cy.contains('items management')
   })
 })
