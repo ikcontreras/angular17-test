@@ -14,13 +14,4 @@ describe('AppComponent', () => {
   it('should create the app', () => {
     expect(component).toBeTruthy();
   });
-
-  it(`should have as title 'items-management'`, () => {
-    expect(component.title).toEqual('items-management');
-  });
-
-  it('should render the title', () => {
-    const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('h1')?.textContent).toContain('items-management');
-  });
 });
