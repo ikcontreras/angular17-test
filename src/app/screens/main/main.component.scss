@@ -1,0 +1,26 @@
+:host {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-flow: column wrap;
+  align-items: center;
+
+  .sheet {
+    background-color: #FFFBEA;
+    height: 100%;
+    padding: 3em 2em;
+
+
+    &__section {
+      padding: 0.5em 0;
+
+      &--pending div:nth-child(odd) {
+        background-color: #f8ffea;
+      }
+  
+      &--complete div:nth-child(odd) {
+        background-color: #FFF1EA;
+      }
+    }
+  }
+}

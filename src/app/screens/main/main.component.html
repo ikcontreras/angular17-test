@@ -1,0 +1,16 @@
+<div class="sheet short-ratio">
+  <div class="long-ratio">
+    <h1>Item management </h1>
+  </div>
+  <h2 #subTitle >To-Do list</h2>
+  @defer (when items.length > 0; prefetch when items) {
+    <app-items-list [items]="items"></app-items-list>
+  }@placeholder {
+    @if (!failRequest) {
+      <span>Loading...</span>
+    } @else {
+      <span>Error loading items</span>
+    }
+  }
+</div>
+
